@@ -1,4 +1,4 @@
 /src/test/
 /target/
 /.idea/
-/pom.xml
+!/pom.xml
