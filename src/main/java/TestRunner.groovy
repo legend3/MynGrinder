@@ -39,7 +39,6 @@ import org.ngrinder.http.cookie.CookieManager
  */
 @RunWith(GrinderRunner)
 class TestRunner {
-
     public static GTest test
     public static HTTPRequest request
     public static Map<String, String> headers = [:]
