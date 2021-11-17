@@ -49,7 +49,7 @@ class TestRunner {
     @BeforeProcess
     static void beforeProcess() {
         HTTPRequestControl.setConnectionTimeout(300000)
-        test = new GTest(1, "127.0.0.1")
+        test = new GTest(1, "www.baidu.com")
         request = new HTTPRequest()
         grinder.logger.info("before process.")
     }
@@ -70,7 +70,7 @@ class TestRunner {
 
     @Test
     void test() {
-        HTTPResponse response = request.GET("http://127.0.0.1:8989/api/v1/session-label/list", params)
+        HTTPResponse response = request.GET("http://www.baidu.com", params)
         print("接口响应信息：" + response.getBodyText())
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
