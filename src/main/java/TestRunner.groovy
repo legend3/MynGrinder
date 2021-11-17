@@ -18,9 +18,6 @@ import org.ngrinder.http.HTTPResponse
 import org.ngrinder.http.cookie.Cookie
 import org.ngrinder.http.cookie.CookieManager
 
-//验证给agent扩展jar
-import org.apache.commons.lang.WordUtils
-
 
 /**
  * A simple example using the HTTP plugin that shows the retrieval of a single page via HTTP.
@@ -72,7 +69,6 @@ class TestRunner {
 
     @Test
     void test() {
-        WordUtils w = new WordUtils();
         HTTPResponse response = request.GET("http://www.baidu.com", params)
         print("接口响应信息：" + response.getBodyText())
         if (response.statusCode == 301 || response.statusCode == 302) {
