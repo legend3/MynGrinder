@@ -65,7 +65,7 @@ class TestRunner {
     @Test
     public void test(){
         HTTPResponse result = request.GET("http://www.baidu.com", params)
-        print("接口响应信息：" + result.getData())
+        print("接口响应：" + result.getData())
         if (result.statusCode == 301 || result.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", result.statusCode);
         } else {
