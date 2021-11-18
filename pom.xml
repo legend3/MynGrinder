@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <ngrinder.version>3.5.5-p1</ngrinder.version>
+        <ngrinder.version>3.5.2</ngrinder.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,19 +20,19 @@
         <dependency>
             <groupId>org.ngrinder</groupId>
             <artifactId>ngrinder-groovy</artifactId>
-            <version>3.5.5-p1</version>
+            <version>3.5.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.ngrinder/ngrinder-runtime -->
         <dependency>
             <groupId>org.ngrinder</groupId>
             <artifactId>ngrinder-runtime</artifactId>
-            <version>3.5.5-p1</version>
+            <version>3.5.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.ngrinder/ngrinder-core -->
         <dependency>
             <groupId>org.ngrinder</groupId>
             <artifactId>ngrinder-core</artifactId>
-            <version>3.5.5-p1</version>
+            <version>3.5.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
