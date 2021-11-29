@@ -15,6 +15,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>example-repo</id>
+            <name>Repository</name>
+            <url>file:E:/Apache/apache-maven-3.8.1/repository</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.ngrinder/ngrinder-groovy -->
         <dependency>
