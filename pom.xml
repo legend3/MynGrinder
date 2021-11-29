@@ -19,7 +19,7 @@
         <repository>
             <id>example-repo</id>
             <name>Repository</name>
-            <url>file:E:/Apache/apache-maven-3.8.1/repository</url>
+            <url>file://E:/Apache/apache-maven-3.8.1/repository</url>
         </repository>
     </repositories>
 
