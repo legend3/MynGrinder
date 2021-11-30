@@ -36,7 +36,7 @@ class TestRunner {
 
     @BeforeProcess
     public static void beforeProcess() {
-        HTTPRequestControl.setConnectionTimeout(300000)
+        HTTPRequestControl.setConnectionTimeout(30000)
         test = new GTest(1, "www.baidu.com")
         request = new HTTPRequest()
         grinder.logger.info("before process.")
