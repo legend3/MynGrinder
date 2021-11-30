@@ -23,11 +23,11 @@
 <!--    </repositories>-->
 
     <dependencies>
-        <dependency>
-            <groupId>org.ngrinder</groupId>
-            <artifactId>ngrinder-groovy</artifactId>
-            <version>3.5.5-p1</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.ngrinder</groupId>-->
+<!--            <artifactId>ngrinder-groovy</artifactId>-->
+<!--            <version>3.5.5-p1</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.ngrinder</groupId>
             <artifactId>ngrinder-runtime</artifactId>
