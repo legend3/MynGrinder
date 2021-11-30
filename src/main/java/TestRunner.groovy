@@ -25,6 +25,13 @@ import org.ngrinder.http.cookie.CookieManager
  *
  * @author admin
  */
+
+/**
+ * nGrinder中的Groovy测试用例应该用@RunWith(GrinderRunner)注释。
+ * 当您在每个IDE的JUnit Runner中运行此脚本时，这部分将使GroovyRunner控制JUnit行为并在JUnit上装载grinder上下文。
+ *
+ * "nGrinder + Junit结合"
+ */
 @RunWith(GrinderRunner)
 class TestRunner {
 
@@ -56,6 +63,10 @@ class TestRunner {
         grinder.logger.info("before. init headers and cookies")
     }
 
+    /**
+     * @Test注释的方法可能会重复执行。
+     * 如下所示，您可以使用JUnit断言来断言测试结果。如果断言失败，则绑定到此线程的最后一个测试将被评估为失败。
+     */
     @Test
     public void test() {
         HTTPResponse response = request.GET("http://www.baidu.com", params)
