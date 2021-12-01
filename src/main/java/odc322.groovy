@@ -1,3 +1,4 @@
+import com.jayway.jsonpath.JsonPath
 import net.grinder.script.GTest
 import net.grinder.scriptengine.groovy.junit.GrinderRunner
 import net.grinder.scriptengine.groovy.junit.annotation.BeforeProcess
@@ -69,7 +70,10 @@ class odc322 {
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else
-            println response.getBody()
-            assertThat(response.statusCode, is(200))
+            println response.getBodyText()
+            def result = '{"data": "ok","durationMillis": null,"httpStatus": "OK","requestId": null,"server": null,"successful": true,"timestamp": null,"traceId": null}'
+            Reader ctx = JsonPath.parse(result)
+//            ctx.read()
+        assertThat(response.statusCode, is(200))
         }
     }
