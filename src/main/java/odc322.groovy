@@ -19,8 +19,20 @@ import static org.junit.Assert.assertThat
 class odc322 {
     public static GTest test;
     public static HTTPRequest request;
-    public static Map<String, String> headers = [:]
-    public static Map<String, Object> params = [:]
+    public static Map<String, String> headers = ["Accept": "application/json",
+                                                 "Accept-Encoding": "gzip, deflate",
+                                                 "Accept-Language": "zh-CN,zh;q=0.9",
+                                                 "Connection": "keep-alive",
+                                                 "Content-Length": "94",
+                                                 "Content-Type": "application/json;charset=UTF-8",
+                                                 "Origin": "http://100.69.100.202:8969",
+                                                 "Referer": "http://100.69.100.202:8969/index.html",
+                                                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) odc/2.4.1 Chrome/85.0.4183.121 Electron/10.4.2 Safari/537.36"
+    ]
+    public static Map<String, Object> params = [
+            "username": "admin",
+            "password": "aaAA11__"
+    ]
     public static List<Cookie> cookies = []
     public static String protocol = "http://"
     public static String host = "100.69.100.202:8969"
@@ -53,7 +65,7 @@ class odc322 {
      */
     @Test
     void test() {
-        HTTPResponse response = request.POST(protocol + host + "/api/v2/iam/login?ignoreError=true", params)
+        HTTPResponse response = request.POST(protocol + host + "/api/v2/iam/login?ignoreError=true", params, headers)
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
