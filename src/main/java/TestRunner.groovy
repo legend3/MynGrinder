@@ -1,3 +1,4 @@
+//ngrinder脚本的上下文对象
 import static net.grinder.script.Grinder.grinder
 import static org.junit.Assert.*
 import static org.hamcrest.Matchers.*
@@ -35,7 +36,18 @@ import org.ngrinder.http.cookie.CookieManager
 @RunWith(GrinderRunner)
 class TestRunner {
 
+    /**
+     * 脚本创建测试实例，然后其可以用于包装其他Jython对象
+     *
+     * 对于nGrinder而言，test是记录统计数据的工作单位。
+     * 1.test由测试号唯一定义，并且还可以具体描述
+     * 2.脚本可以在同一个测试中报告许多不同类型的东西，nGrinder将汇总结果
+     * 3.创建一个Test将自动使用测试号和描述自动，更新nGrinder console。如果使用相同数量但不同的描述创建两个Test，则console将显示第一个描述
+     */
     public static GTest test
+    /**
+     *
+     */
     public static HTTPRequest request
     public static Map<String, String> headers = [:]
     public static Map<String, Object> params = [:]
@@ -43,15 +55,30 @@ class TestRunner {
 
     @BeforeProcess
     public static void beforeProcess() {
+        //设置与远程应用服务器建立连接的时间
         HTTPRequestControl.setConnectionTimeout(30000)
-        test = new GTest(1, "www.baidu.com")
+        //创建一个test实例
+        test = new GTest(1, "BaiDu")
+        //创建一个httpclient的HTTPRequest实例(发送请求)
         request = new HTTPRequest()
+        //获取一个slf4j的Logger，并用其记录日志信息
         grinder.logger.info("before process.")
     }
 
     @BeforeThread
     public void beforeThread() {
+        //记录目标对象->TestRunner类的实例的test方法的仪表数据
         test.record(this, "test")
+        /**
+         * 用于延迟向日志和控制台报告上次测试统计信息，以便脚本可以修改它们。
+         * 通常，当测试包装的代码完成时，会自动报告测试统计信息。
+         * 将此设置为 true 后，将在以下时间报告已完成测试的统计信息：
+         * 下一次测试开始时
+         * 当封闭测试结束时
+         * 当前运行完成时
+         * 当脚本调用 report方法
+         * 当脚本调用 setDelayReports(false) 时
+         */
         grinder.statistics.delayReports = true
         grinder.logger.info("before thread.")
     }
@@ -68,7 +95,7 @@ class TestRunner {
      * 如下所示，您可以使用JUnit断言来断言测试结果。如果断言失败，则绑定到此线程的最后一个测试将被评估为失败。
      */
     @Test
-    public void test() {
+     void test() {
         HTTPResponse response = request.GET("http://www.baidu.com", params)
 
         if (response.statusCode == 301 || response.statusCode == 302) {
