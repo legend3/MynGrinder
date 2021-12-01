@@ -68,9 +68,8 @@ class odc322 {
         HTTPResponse response = request.POST(protocol + host + "/api/v2/iam/login?ignoreError=true", params, headers)
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
-        } else {
+        } else
+            println response.getBody()
             assertThat(response.statusCode, is(200))
         }
     }
-
-}
