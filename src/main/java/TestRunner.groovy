@@ -63,6 +63,7 @@ class TestRunner {
         request = new HTTPRequest()
         //获取一个slf4j的Logger，并用其记录日志信息
         grinder.logger.info("before process.")
+        //为什么grinder接口调用接口方法只需要用属性名，属性名从哪来？？？
     }
 
     @BeforeThread

@@ -1,4 +1,3 @@
-import com.jayway.jsonpath.JsonPath
 import net.grinder.script.GTest
 import net.grinder.scriptengine.groovy.junit.GrinderRunner
 import net.grinder.scriptengine.groovy.junit.annotation.BeforeProcess
@@ -39,7 +38,7 @@ class odc322 {
     public static String host = "100.69.100.202:8969"
 
     @BeforeProcess
-    public static void beforeProcess() {
+     static void beforeProcess() {
         HTTPRequestControl.setConnectionTimeout(300000);
         test = new GTest(1,"login");
         request = new HTTPRequest();
@@ -47,16 +46,16 @@ class odc322 {
     }
 
     @BeforeThread
-    public void beforeThread() {
+     void beforeThread() {
         test.record(this, "test")
         grinder.statistics.delayReports = true
         grinder.logger.info("before thread.")
     }
 
     @Before
-    public void before() {
+     void before() {
         request.setHeaders(headers)
-        CookieManager.addCookies(cookies)
+        CookieManager.addCookie(cookies)
         grinder.logger.info("before. init headers and cookies")
     }
 
