@@ -1,4 +1,13 @@
 //ngrinder脚本的上下文对象
+
+
+import com.fasterxml.jackson.core.JsonFactory
+import com.fasterxml.jackson.core.JsonParseException
+import com.fasterxml.jackson.databind.JsonMappingException
+import com.fasterxml.jackson.databind.ObjectMapper
+import org.legend.bean.Student
+import org.springframework.beans.factory.annotation.Autowired
+
 import static net.grinder.script.Grinder.grinder
 import static org.junit.Assert.*
 import static org.hamcrest.Matchers.*
@@ -33,16 +42,18 @@ import org.ngrinder.http.cookie.CookieManager
  *
  * "nGrinder + Junit结合"
  */
-@RunWith(GrinderRunner)
+@RunWith(GrinderRunner)//用GrinderRunner测试(扩展了的junit4)
 class TestRunner {
-
+    @Autowired
+    private ObjectMapper objectMapper;
     /**
      * 脚本创建测试实例，然后其可以用于包装其他Jython对象
      *
      * 对于nGrinder而言，test是记录统计数据的工作单位。
      * 1.test由测试号唯一定义，并且还可以具体描述
      * 2.脚本可以在同一个测试中报告许多不同类型的东西，nGrinder将汇总结果
-     * 3.创建一个Test将自动使用测试号和描述自动，更新nGrinder console。如果使用相同数量但不同的描述创建两个Test，则console将显示第一个描述
+     * 3.创建一个Test将自动使用测试号和描述自动，更新nGrinder console。
+     * 如果使用相同数量但不同的描述创建两个Test，则console将显示第一个描述
      */
     public static GTest test
     /**
@@ -54,7 +65,7 @@ class TestRunner {
     public static List<Cookie> cookies = []
 
     @BeforeProcess
-    public static void beforeProcess() {
+    static void beforeProcess() {
         //设置与远程应用服务器建立连接的时间
         HTTPRequestControl.setConnectionTimeout(30000)
         //创建一个test实例
@@ -64,10 +75,11 @@ class TestRunner {
         //获取一个slf4j的Logger，并用其记录日志信息
         grinder.logger.info("before process.")
         //为什么grinder接口调用接口方法只需要用属性名，属性名从哪来？？？
+        println "进程数：" + grinder.firstProcessNumber
     }
 
     @BeforeThread
-    public void beforeThread() {
+    void beforeThread() {
         //记录目标对象->TestRunner类的实例的test方法的仪表数据
         test.record(this, "test")
         /**
@@ -85,7 +97,7 @@ class TestRunner {
     }
 
     @Before
-    public void before() {
+    void before() {
         request.setHeaders(headers)
         CookieManager.addCookies(cookies)
         grinder.logger.info("before. init headers and cookies")
@@ -97,12 +109,27 @@ class TestRunner {
      */
     @Test
      void test() {
+//        println SecureUtil.md5("a")//加密转为16进制字符串
         HTTPResponse response = request.GET("http://www.baidu.com", params)
 
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
+            String jsonString = "{\"name\":\"Mahesh\", \"age\":21}";//json字符串
+            //map json to student
+            try{
+                Student student = objectMapper.readValue(jsonString, Student.class);
+                System.out.println("json字符串转为java对象: " + student);
+                jsonString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(student);
+                System.out.println("java对象转为json字符串: " + jsonString);
+            } catch (JsonParseException e) {
+                e.printStackTrace();
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace(); }
             assertThat(response.statusCode, is(200))
         }
+
     }
 }

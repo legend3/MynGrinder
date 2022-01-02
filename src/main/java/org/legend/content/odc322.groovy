@@ -57,6 +57,7 @@ class odc322 {
         request.setHeaders(headers)
         CookieManager.addCookie(cookies)
         grinder.logger.info("before. init headers and cookies")
+        grinder.firstProcessNumber
     }
 
     /**
