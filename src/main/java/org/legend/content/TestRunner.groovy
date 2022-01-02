@@ -44,8 +44,8 @@ import org.ngrinder.http.cookie.CookieManager
  */
 @RunWith(GrinderRunner)//用GrinderRunner测试(扩展了的junit4)
 class TestRunner {
-    @Autowired
-    private ObjectMapper objectMapper;
+//    @Autowired
+//    private
     /**
      * 脚本创建测试实例，然后其可以用于包装其他Jython对象
      *
@@ -115,6 +115,7 @@ class TestRunner {
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
+            ObjectMapper objectMapper = new ObjectMapper()
             String jsonString = "{\"name\":\"Mahesh\", \"age\":21}";//json字符串
             //map json to student
             try{
