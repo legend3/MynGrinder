@@ -29,16 +29,16 @@
 
     <dependencies>
 <!--    测试后注释,平台自带会冲突    -->
-<!--        <dependency>-->
-<!--            <groupId>org.ngrinder</groupId>-->
-<!--            <artifactId>ngrinder-core</artifactId>-->
-<!--            <version>3.5.5-p1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.jayway.jsonpath</groupId>-->
-<!--            <artifactId>json-path</artifactId>-->
-<!--            <version>2.6.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.ngrinder</groupId>
+            <artifactId>ngrinder-core</artifactId>
+            <version>3.5.5-p1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.6.0</version>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>cn.hutool</groupId>-->
 <!--            <artifactId>hutool-all</artifactId>-->

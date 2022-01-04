@@ -111,19 +111,7 @@ class TestRunner {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
             ObjectMapper objectMapper = new ObjectMapper()
-            String jsonString = "{\"name\":\"Mahesh\", \"age\":21}";//json字符串
-            //map json to student
-            try{
-                Student student = objectMapper.readValue(jsonString, Student.class);
-                System.out.println("json字符串转为java对象: " + student);
-                jsonString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(student);
-                System.out.println("java对象转为json字符串: " + jsonString);
-            } catch (JsonParseException e) {
-                e.printStackTrace();
-            } catch (JsonMappingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace(); }
+            println response.getBodyText()
             assertThat(response.statusCode, is(200))
         }
 
