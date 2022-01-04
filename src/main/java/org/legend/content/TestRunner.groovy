@@ -115,7 +115,7 @@ class TestRunner {
             Student student = new Student("legend", 36)
             println(student.getName())
             ObjectMapper objectMapper = new ObjectMapper()
-            println response.getBodyText(Charset.defaultCharset())
+//            println response.getBodyText(Charset.defaultCharset())
             assertThat(response.statusCode, is(200))
         }
 
