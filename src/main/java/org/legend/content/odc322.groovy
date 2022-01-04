@@ -98,8 +98,6 @@ class odc322 {
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
-            Student student = new Student("legend", 36)
-            println(student.getName())
             ObjectMapper mapper = new ObjectMapper()
             ReadContext ctx = JsonPath.parse(response.getBodyText(Charset.forName("UTF-8")))
             println(ctx.json())

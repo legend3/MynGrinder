@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.legend.bean.Student
 
+import java.nio.charset.Charset
+
 import static net.grinder.script.Grinder.grinder
 import static org.junit.Assert.*
 import static org.hamcrest.Matchers.*
@@ -110,8 +112,10 @@ class TestRunner {
         if (response.statusCode == 301 || response.statusCode == 302) {
             grinder.logger.warn("Warning. The response may not be correct. The response code was {}.", response.statusCode)
         } else {
+            Student student = new Student("legend", 36)
+            println(student.getName())
             ObjectMapper objectMapper = new ObjectMapper()
-            println response.getBodyText()
+            println response.getBodyText(Charset.defaultCharset())
             assertThat(response.statusCode, is(200))
         }
 
