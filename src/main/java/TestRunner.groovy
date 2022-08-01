@@ -160,7 +160,7 @@ class TestRunner {
 //        GenericGroovyApplicationContext context2 = new GenericGroovyApplicationContext("classpath:applicationContext.xml")
 //        println(context2.getBean("student"))
 
-        //springboot——>不可行，因为springboot启动一定要经过tomcat部署启动
+        //springboot——>不可行，因为springboot启动一定要经过tomcat部署启动.
 //        ConfigurableApplicationContext run = SpringApplication.run(MainApplication.class, args);//固定写法
     }
 }
