@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+http://www.springframework.org/schema/tx "
+>
+    <!--    <lang:groovy id="student" script-source="classpath:Student.groovy">-->
+    <!--        <lang:property name="name" value="legend"></lang:property>-->
+    <!--        <lang:property name="age" value="36"></lang:property>-->
+    <!--        <lang:property name="teacher" ref="teacher"></lang:property>-->
+    <!--    </lang:groovy>-->
+    <!--    <lang:groovy id="teacher" script-source="classpath:Teacher.groovy">-->
+    <!--        <lang:property name="name" value="Lily"></lang:property>-->
+    <!--        <lang:property name="age" value="58"></lang:property>-->
+    <!--    </lang:groovy>-->
+    <!--    <bean id="student" class="Student">-->
+    <!--        <property name="name" value="lilei"></property>-->
+    <!--        <property name="age" value="10"></property>-->
+    <!--&lt;!&ndash;        <property name="teacher" ref="teacher"></property>&ndash;&gt;-->
+    <!--    </bean>-->
+    <!--    <bean id="teacher" class="Teacher">-->
+    <!--        <property name="name" value="Nice"></property>-->
+    <!--        <property name="age" value="30"></property>-->
+    <!--    </bean>-->
+    <context:component-scan base-package="org.legend.beans"/>
+</beans>
